@@ -1,14 +1,18 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-import pytest
+# import pytest
 from selenium.webdriver.support.ui import Select
 
 
-
-driver = webdriver.Chrome(ChromeDriverManager().install())
-base_url = 'https://www.saucedemo.com/'
-driver.get(base_url)
+def open_test():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
+    base_url = 'https://www.saucedemo.com/'
+    driver.get(base_url)
 
 
 def test_remove():
@@ -18,17 +22,17 @@ def test_remove():
     password.send_keys('secret_sauce')
     login_button = driver.find_element(By.ID, 'login-button')
     login_button.click()
-    add_cart_button = driver.find_element(By. ID, 'add-to-cart-sauce-labs-backpack')
+    add_cart_button = driver.find_element(By.ID, 'add-to-cart-sauce-labs-backpack')
     add_cart_button.click()
-    remove_cart_button = driver.find_element(By. ID,'remove-sauce-labs-backpack')
+    remove_cart_button = driver.find_element(By.ID, 'remove-sauce-labs-backpack')
     assert remove_cart_button.text == 'Remove'
     remove_cart_button.click()
     add_cart_button1 = driver.find_element(By.ID, 'add-to-cart-sauce-labs-backpack')
     assert add_cart_button1.text == 'Add to cart'
     driver.quit()
 
+
 def test_dropdown():
-    driver.get(base_url)
     login = driver.find_element(By.ID, 'user-name')
     login.send_keys('standard_user')
     password = driver.find_element(By.ID, 'password')
@@ -45,7 +49,7 @@ def test_dropdown():
 
 
 def test_buy():
-    driver.get(base_url)
+    # driver.get(base_url)
     login = driver.find_element(By.ID, 'user-name')
     login.send_keys('standard_user')
     password = driver.find_element(By.ID, 'password')
@@ -56,7 +60,7 @@ def test_buy():
     add_cart_button1.click()
     cart = driver.find_element(By.CLASS_NAME, 'shopping_cart_link')
     cart.click()
-    checkout = driver.find_element(By. ID, 'checkout')
+    checkout = driver.find_element(By.ID, 'checkout')
     checkout.click()
     first_name = driver.find_element(By.ID, 'first-name')
     first_name.send_keys('first_name')

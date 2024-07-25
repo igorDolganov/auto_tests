@@ -40,7 +40,6 @@ class GoogleMapsAPI:
 
         get_resource = '/maps/api/place/get/json'
         get_url = base_URL+get_resource+key+'&place_id='+place_id
-        print(get_url)
         result_get = HttpMethods.get(get_url)
         return result_get
 

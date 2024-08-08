@@ -1,13 +1,13 @@
-import allure
+
 from utils.check import *
 from utils.api import *
 
 """создание, удаление и изменение локации"""
 
 
-@allure.epic
+@allure.epic('CRUD test location')
 class TestCreatePlace:
-    @allure.description('CRUD location')
+    @allure.description('CRUD')
     def test_create_new_place(self):
 
         print("Метод POST")
@@ -32,5 +32,3 @@ class TestCreatePlace:
         result_delete: Response = GoogleMapsAPI.delete_new_place(place_id)
         Check.check_status_code(result_delete, 200)
         Check.check_json_token(result_delete, ['status'])
-
-

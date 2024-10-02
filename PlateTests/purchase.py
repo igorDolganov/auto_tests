@@ -4,8 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
+class Test1:
 
-class Test1():
     def test_food(self):
         driver = webdriver.Chrome(ChromeDriverManager().install())
         base_url = 'https://tarelka.in-aim.dev/'
@@ -33,5 +33,3 @@ class Test1():
         code.send_keys(number)
         driver.find_element(By.XPATH, "(//div[@class='login-page__field'])[3]").click()
         time.sleep(1)
-
-

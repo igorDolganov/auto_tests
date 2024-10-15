@@ -9,7 +9,6 @@ class TestsLinkConstructor:
         constructor_button.click()
         current_url = driver_launch.current_url
         assert current_url
-        driver_launch.quit()
 
     def test_logo_button(self, driver_launch):
         personal_cabinet = driver_launch.find_element(*MainPageLocators.personal_cabinet)
@@ -18,4 +17,3 @@ class TestsLinkConstructor:
         logo_button.click()
         current_url = driver_launch.current_url
         assert current_url
-        driver_launch.quit()

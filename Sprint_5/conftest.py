@@ -16,7 +16,8 @@ def driver_launch():
     driver.get(base_url)
     driver.maximize_window()
     driver.implicitly_wait(10)
-    return driver
+    yield driver
+    driver.quit()
 
 
 @pytest.fixture

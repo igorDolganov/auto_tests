@@ -20,4 +20,4 @@ class TestLogout:
         WebDriverWait(driver_launch, 10).until(EC.url_contains('login'))
         current_url = driver_launch.current_url
         assert 'login' in current_url, f"Expected URL to contain 'login', but got {current_url}"
-        driver_launch.quit()
+
